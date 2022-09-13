@@ -18,8 +18,7 @@ Enter to the yolo_anpr folder
 cd yolo_anpr
 ````
 Requirements
-````
-- Now install requirements.txt
+
 ````
 pip install -r requirements.txt
 ````
