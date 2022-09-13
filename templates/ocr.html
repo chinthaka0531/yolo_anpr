@@ -1,0 +1,60 @@
+{% extends 'layout_ocr.html' %}
+{% block body %}
+<style>
+   table, td {
+   border: 1px solid #260547;
+   border-collapse: collapse;
+   }
+   th{
+   border: 1px solid white;
+   text-align: center;
+   color: white;
+   background-color: #260547;
+   }
+   td {
+   background-color: white;
+   }
+   table.center {
+   margin-left: auto;
+   margin-right: auto;
+   }
+</style>
+<div class="container">
+   <br><br>
+   <form action="/submitted" method="POST" enctype="multipart/form-data">
+      <div class="input-group">
+         <input type="file" class="form-control" name="image_name" required>
+         <input type="submit" value="Upload" class="btn btn-outline-secondary">
+      </div>
+   </form>
+</div>
+{% if upload %}
+<div class="container">
+   <br><br>
+   <table>
+      <tr>
+         <th>Loaded Image</th>
+         <th>Predicted Image</th>
+      </tr>
+      <tr>
+         <td>
+            <img class="img-thumbnail" src="/static/in/{{ upload_image }}" alt="">
+         </td>
+         <td>
+            <img class="rounded float-right img-fluid" src="/static/pred/{{ upload_image }}" alt="">
+         </td>
+      </tr>
+   </table>
+   <br><br><br>
+   <table class="center" style="width:80%">
+      {% for key, value in text.items() %}
+      <tr>
+         <th style="width:20%">{{ key }} </th>
+         <td> {{ value }} </td>
+      </tr>
+      {% endfor %}
+   </table>
+   <br><br><br><br>
+</div>
+{% endif %}
+{% endblock  %}
